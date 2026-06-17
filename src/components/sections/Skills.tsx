@@ -103,6 +103,11 @@ interface SkillItemProps {
 function SkillItem({ name, logo, color }: SkillItemProps) {
   const [hovered, setHovered] = useState(false);
   const brandColor = color ?? 'var(--primary)';
+  // Monochrome logos use white (#FFFFFF) as their brand color but ship as
+  // near-black SVGs, so they read black in light mode and disappear in dark mode.
+  // Invert them in dark mode so they turn white, and use a theme-aware label color
+  // (black in light, white in dark) instead of the invisible white brand color.
+  const isMonochromeLogo = brandColor.toUpperCase() === '#FFFFFF';
 
   return (
     <motion.div
@@ -119,7 +124,9 @@ function SkillItem({ name, logo, color }: SkillItemProps) {
           alt={`${name} logo`}
           width={56}
           height={56}
-          className="w-12 h-12 sm:w-14 sm:h-14 object-contain transition-transform duration-300"
+          className={`w-12 h-12 sm:w-14 sm:h-14 object-contain transition-transform duration-300 ${
+            isMonochromeLogo ? 'dark:invert' : ''
+          }`}
           draggable={false}
         />
       ) : (
@@ -134,8 +141,10 @@ function SkillItem({ name, logo, color }: SkillItemProps) {
           initial={false}
           animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
           transition={{ duration: 0.2 }}
-          className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-3 px-2 py-0.5 rounded-md text-sm font-semibold whitespace-nowrap"
-          style={{ color: brandColor }}
+          className={`pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-3 px-2 py-0.5 rounded-md text-sm font-semibold whitespace-nowrap ${
+            isMonochromeLogo ? 'text-foreground' : ''
+          }`}
+          style={isMonochromeLogo ? undefined : { color: brandColor }}
         >
           {name}
         </motion.span>
