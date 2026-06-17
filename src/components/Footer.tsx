@@ -69,7 +69,7 @@ export default function Footer() {
           >
             <Button
               onClick={handleDownloadCV}
-              className="bg-gradient-to-r from-primary to-accent hover:opacity-90 rounded-full px-4 sm:px-6 py-4 sm:py-5 text-sm sm:text-base flex items-center gap-2 w-full sm:w-auto"
+              className="bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent hover:opacity-90 rounded-full px-4 sm:px-6 py-4 sm:py-5 text-sm sm:text-base flex items-center gap-2 w-full sm:w-auto"
             >
               <Download className="w-3 sm:w-4 h-3 sm:h-4" />
               Download CV

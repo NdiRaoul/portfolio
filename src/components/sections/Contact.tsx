@@ -136,7 +136,7 @@ export default function Contact() {
           className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">Get in Touch</h2>
-          <p className="text-foreground/60 max-w-2xl mx-auto">
+          <p className="text-primary max-w-2xl mx-auto">
             Have a project in mind? Let's collaborate and create something amazing together.
           </p>
         </motion.div>
@@ -155,7 +155,7 @@ export default function Contact() {
             style={{ perspective: '1000px' }}
           >
             <motion.div whileHover={{ y: -4 }}>
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Contact Information</h3>
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent bg-clip-text text-transparent">Contact Information</h3>
               <p className="text-sm sm:text-base text-foreground/60 mb-6 sm:mb-8 leading-relaxed">
                 Feel free to reach out to me through any of the following channels. I'm always happy to discuss new opportunities and ideas.
               </p>
@@ -306,7 +306,7 @@ export default function Contact() {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 rounded-lg py-6 text-base font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
+                  className="w-full bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent hover:opacity-90 rounded-lg py-6 text-base font-semibold flex items-center justify-center gap-2 disabled:opacity-50"
                 >
                   <Send className="w-5 h-5" />
                   {isLoading ? 'Sending...' : 'Send Message'}

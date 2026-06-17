@@ -108,7 +108,7 @@ export default function Hero() {
           <motion.div variants={itemVariants} className="space-y-6 md:space-y-8 order-2 md:order-1">
             {/* Name & Title */}
             <motion.div variants={itemVariants}>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 md:mb-3 bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent bg-clip-text text-transparent leading-tight">
                 {PERSONAL.name}
               </h1>
               <p className="text-base sm:text-lg md:text-xl text-foreground/70">{PERSONAL.title}</p>
@@ -116,7 +116,7 @@ export default function Hero() {
 
             {/* Experience Badge */}
             <motion.div variants={itemVariants} className="flex items-baseline gap-2 md:gap-3">
-              <span className="text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <span className="text-2xl sm:text-3xl md:text-4xl font-bold bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent bg-clip-text text-transparent">
                 {PERSONAL.yearsExperience}+
               </span>
               <span className="text-sm sm:text-base md:text-lg text-foreground/60">Years of Experience</span>
@@ -134,7 +134,7 @@ export default function Hero() {
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      className="inline-block bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent"
+                      className="inline-block bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent bg-clip-text text-transparent"
                     >
                       {MISSION_VISION.animatedWords[currentWordIndex]}
                     </motion.span>
@@ -151,7 +151,7 @@ export default function Hero() {
             <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-2">
               <Button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-gradient-to-r from-primary to-accent hover:opacity-90 rounded-full px-6 sm:px-8 py-5 sm:py-6 font-semibold text-sm sm:text-base w-full sm:w-auto"
+                className="bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent hover:opacity-90 rounded-full px-6 sm:px-8 py-5 sm:py-6 font-semibold text-sm sm:text-base w-full sm:w-auto"
               >
                 Let's Connect
               </Button>
@@ -173,7 +173,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-2.5 sm:p-3 rounded-full bg-gradient-to-br from-primary/10 to-primary/20 hover:from-primary/20 hover:to-primary/30 border border-primary/30 hover:border-primary/50 transition-all shadow-lg"
+                className="p-2.5 sm:p-3 rounded-full bg-primary/10 dark:bg-gradient-to-br dark:from-primary/10 dark:to-primary/20 dark:hover:from-primary/20 dark:hover:to-primary/30 hover:bg-primary/20 border border-primary/30 hover:border-primary/50 transition-all shadow-lg"
               >
                 <Github className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
               </motion.a>
@@ -183,7 +183,7 @@ export default function Hero() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.95 }}
-                className="p-2.5 sm:p-3 rounded-full bg-gradient-to-br from-accent/10 to-accent/20 hover:from-accent/20 hover:to-accent/30 border border-accent/30 hover:border-accent/50 transition-all shadow-lg"
+                className="p-2.5 sm:p-3 rounded-full bg-accent/10 dark:bg-gradient-to-br dark:from-accent/10 dark:to-accent/20 dark:hover:from-accent/20 dark:hover:to-accent/30 hover:bg-accent/20 border border-accent/30 hover:border-accent/50 transition-all shadow-lg"
               >
                 <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-accent" />
               </motion.a>
@@ -198,7 +198,7 @@ export default function Hero() {
         animate={{ opacity: showScrollTop ? 1 : 0, y: showScrollTop ? 0 : 20 }}
         transition={{ duration: 0.3 }}
         onClick={scrollToTop}
-        className="fixed bottom-8 right-8 p-3 rounded-full bg-gradient-to-r from-primary to-accent text-white shadow-2xl hover:shadow-3xl transition-shadow"
+        className="fixed bottom-8 right-8 p-3 rounded-full bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent text-white shadow-2xl hover:shadow-3xl transition-shadow"
         aria-label="Scroll to top"
       >
         <ChevronUp className="w-6 h-6" />

@@ -76,7 +76,7 @@ export default function FloatingTimeCard() {
       style={{ left: `${position.x}px`, top: `${position.y}px` }}
     >
       <motion.div
-        className="bg-gradient-to-br from-primary/80 to-accent/80 backdrop-blur-md border border-primary/30 rounded-lg sm:rounded-2xl p-2 sm:p-4 shadow-lg hover:shadow-xl transition-shadow"
+        className="bg-primary/80 dark:bg-gradient-to-br dark:from-primary/80 dark:to-accent/80 backdrop-blur-md border border-primary/30 rounded-lg sm:rounded-2xl p-2 sm:p-4 shadow-lg hover:shadow-xl transition-shadow"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.98 }}
       >

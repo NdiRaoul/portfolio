@@ -140,6 +140,108 @@ export const SKILL_ICONS: Record<string, IconType> = {
   'Expo': SiExpo,
 };
 
+// Official brand colors (hex). Monochrome brands that are pure black/dark
+// (Next.js, Vercel, Express, Three.js, JWT, Prisma, Expo) use their on-dark
+// white variant so they stay visible on the dark default theme.
+export const SKILL_COLORS: Record<string, string> = {
+  // Languages
+  'JavaScript': '#F7DF1E',
+  'TypeScript': '#3178C6',
+  'Dart': '#0175C2',
+  'PHP': '#777BB4',
+  'HTML5': '#E34F26',
+  'CSS': '#1572B6',
+
+  // Frontend
+  'React': '#61DAFB',
+  'Next.js': '#FFFFFF',
+  'React Native': '#61DAFB',
+  'Flutter': '#02569B',
+  'Tailwind CSS': '#06B6D4',
+  'SASS': '#CC6699',
+  'Bootstrap': '#7952B3',
+  'Framer Motion': '#0055FF',
+  'Three.js': '#FFFFFF',
+  'Vite': '#646CFF',
+  'Redux': '#764ABC',
+
+  // Backend
+  'Node.js': '#5FA04E',
+  'Express.js': '#FFFFFF',
+  'Firebase': '#FFCA28',
+  'PostgreSQL': '#4169E1',
+  'MongoDB': '#47A248',
+  'Prisma': '#FFFFFF',
+  'Supabase': '#3FCF8E',
+  'SQL': '#4479A1',
+
+  // Tools
+  'Git': '#F05032',
+  'Postman': '#FF6C37',
+  'JWT': '#FFFFFF',
+  'NPM': '#CB3837',
+  'Nodemon': '#76D04B',
+  'Chart.js': '#FF6384',
+  'AWS': '#FF9900',
+  'Netlify': '#00C7B7',
+  'Vercel': '#FFFFFF',
+  'Render': '#46E3B7',
+  'Apache': '#D22128',
+  'WordPress': '#21759B',
+  'Expo': '#FFFFFF',
+};
+
+// Official downloaded logo files (in /public/logos). Sourced from Devicon
+// (full-color official logos) with Simple Icons fallbacks for monochrome /
+// uncovered brands. See public/logos/*.svg.
+export const SKILL_LOGOS: Record<string, string> = {
+  // Languages
+  'JavaScript': '/logos/javascript.svg',
+  'TypeScript': '/logos/typescript.svg',
+  'Dart': '/logos/dart.svg',
+  'PHP': '/logos/php.svg',
+  'HTML5': '/logos/html5.svg',
+  'CSS': '/logos/css.svg',
+
+  // Frontend
+  'React': '/logos/react.svg',
+  'Next.js': '/logos/nextjs.svg',
+  'React Native': '/logos/reactnative.svg',
+  'Flutter': '/logos/flutter.svg',
+  'Tailwind CSS': '/logos/tailwindcss.svg',
+  'SASS': '/logos/sass.svg',
+  'Bootstrap': '/logos/bootstrap.svg',
+  'Framer Motion': '/logos/framermotion.svg',
+  'Three.js': '/logos/threejs.svg',
+  'Vite': '/logos/vite.svg',
+  'Redux': '/logos/redux.svg',
+
+  // Backend
+  'Node.js': '/logos/nodejs.svg',
+  'Express.js': '/logos/expressjs.svg',
+  'Firebase': '/logos/firebase.svg',
+  'PostgreSQL': '/logos/postgresql.svg',
+  'MongoDB': '/logos/mongodb.svg',
+  'Prisma': '/logos/prisma.svg',
+  'Supabase': '/logos/supabase.svg',
+  'SQL': '/logos/sql.svg',
+
+  // Tools
+  'Git': '/logos/git.svg',
+  'Postman': '/logos/postman.svg',
+  'JWT': '/logos/jwt.svg',
+  'NPM': '/logos/npm.svg',
+  'Nodemon': '/logos/nodemon.svg',
+  'Chart.js': '/logos/chartjs.svg',
+  'AWS': '/logos/aws.svg',
+  'Netlify': '/logos/netlify.svg',
+  'Vercel': '/logos/vercel.svg',
+  'Render': '/logos/render.svg',
+  'Apache': '/logos/apache.svg',
+  'WordPress': '/logos/wordpress.svg',
+  'Expo': '/logos/expo.svg',
+};
+
 export const SERVICES = [
   {
     title: 'Web Development',
@@ -374,7 +476,7 @@ export const TESTIMONIALS = [
     quote:
       'Excellent communication and attention to detail. Brought our designs to life beautifully.',
     image: '/images/avatar.jpeg',
-    rating: 5,
+    rating: 4,
   },
   {
     name: 'David Martinez',

@@ -3,41 +3,33 @@
 import { motion } from 'framer-motion';
 import { useState, useEffect, useRef } from 'react';
 import gsap from 'gsap';
-import { SKILLS, SKILL_ICONS } from '@/data/constants';
-import { IconType } from 'react-icons';
+import { SKILLS, SKILL_LOGOS, SKILL_COLORS } from '@/data/constants';
+
+// Static, deterministic list — derived once at module scope so it doesn't need
+// state or an effect (avoids cascading renders).
+const SKILLS_LIST = Array.from(
+  new Set([
+    ...SKILLS.languages,
+    ...SKILLS.frontend,
+    ...SKILLS.backend,
+    ...SKILLS.tools,
+  ])
+).map((skill) => ({
+  name: skill,
+  logo: SKILL_LOGOS[skill],
+  color: SKILL_COLORS[skill],
+}));
 
 export default function Skills() {
   const [isPaused, setIsPaused] = useState(false);
   const rowRef = useRef(null);
-  const [skillsList, setSkillsList] = useState<Array<{ name: string; Icon?: IconType }>>([]);
-
-  useEffect(() => {
-    // Combine all skills into one list
-    const allSkills = [
-      ...SKILLS.languages,
-      ...SKILLS.frontend,
-      ...SKILLS.backend,
-      ...SKILLS.tools,
-    ];
-
-    // Create unique list to avoid duplicates if any
-    const uniqueSkills = Array.from(new Set(allSkills));
-
-    // Map to objects with icon component
-    const mappedSkills = uniqueSkills.map((skill) => ({
-      name: skill,
-      Icon: SKILL_ICONS[skill],
-    }));
-
-    setSkillsList(mappedSkills);
-  }, []);
 
   useEffect(() => {
     const tl = gsap.timeline({ repeat: -1, paused: isPaused });
 
     if (rowRef.current) {
       const containerWidth = (rowRef.current as HTMLElement).scrollWidth / 2; // Half because we duplicate list
-      
+
       tl.to(rowRef.current, {
         x: -containerWidth,
         duration: 40, // Slower speed for better visibility
@@ -48,7 +40,7 @@ export default function Skills() {
     return () => {
       tl.kill();
     };
-  }, [isPaused, skillsList]);
+  }, [isPaused]);
 
   return (
     <section id="skills" className="py-16 sm:py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
@@ -76,20 +68,21 @@ export default function Skills() {
             viewport={{ once: true }}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
-            className="relative overflow-hidden p-4"
+            className="relative overflow-hidden p-4 py-10"
           >
             <div className="overflow-hidden">
               <motion.div
                 ref={rowRef}
-                className="flex gap-8 sm:gap-12 w-max items-center"
+                className="flex gap-10 sm:gap-14 w-max items-center"
                 initial={{ x: 0 }}
               >
                 {/* Render list twice for seamless loop */}
-                {[...skillsList, ...skillsList].map((skill, idx) => (
+                {[...SKILLS_LIST, ...SKILLS_LIST].map((skill, idx) => (
                   <SkillItem
                     key={`${skill.name}-${idx}`}
                     name={skill.name}
-                    Icon={skill.Icon}
+                    logo={skill.logo}
+                    color={skill.color}
                   />
                 ))}
               </motion.div>
@@ -103,26 +96,49 @@ export default function Skills() {
 
 interface SkillItemProps {
   name: string;
-  Icon?: IconType;
+  logo?: string;
+  color?: string;
 }
 
-function SkillItem({ name, Icon }: SkillItemProps) {
+function SkillItem({ name, logo, color }: SkillItemProps) {
+  const [hovered, setHovered] = useState(false);
+  const brandColor = color ?? 'var(--primary)';
+
   return (
     <motion.div
-      whileHover={{ scale: 1.2, rotate: 5 }}
-      className="flex-shrink-0 relative group cursor-pointer"
+      whileHover={{ scale: 1.15, y: -6 }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="flex-shrink-0 relative cursor-pointer"
       title={name} // Tooltip for accessibility and clarity
     >
-      {Icon ? (
-        <div className="text-5xl sm:text-6xl text-foreground/50 group-hover:text-primary transition-colors filter grayscale group-hover:grayscale-0">
-          <Icon />
-        </div>
+      {logo ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={logo}
+          alt={`${name} logo`}
+          width={56}
+          height={56}
+          className="w-12 h-12 sm:w-14 sm:h-14 object-contain transition-transform duration-300"
+          draggable={false}
+        />
       ) : (
         <div className="px-6 py-3 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm">
-          <p className="text-lg font-bold text-foreground/80 group-hover:text-primary transition-colors whitespace-nowrap">
-            {name}
-          </p>
+          <p className="text-lg font-bold text-foreground/80 whitespace-nowrap">{name}</p>
         </div>
+      )}
+
+      {/* Programming language name revealed on hover */}
+      {logo && (
+        <motion.span
+          initial={false}
+          animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
+          transition={{ duration: 0.2 }}
+          className="pointer-events-none absolute top-full left-1/2 -translate-x-1/2 mt-3 px-2 py-0.5 rounded-md text-sm font-semibold whitespace-nowrap"
+          style={{ color: brandColor }}
+        >
+          {name}
+        </motion.span>
       )}
     </motion.div>
   );

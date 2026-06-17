@@ -67,7 +67,7 @@ export default function Testimonials() {
             >
               {/* Image */}
               <div className="relative w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-6">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary to-accent p-[2px]">
+                <div className="absolute inset-0 rounded-full bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent p-[2px]">
                   <div className="w-full h-full rounded-full overflow-hidden relative">
                     <Image
                       src={TESTIMONIALS[currentIndex].image || '/images/avatar.jpeg'}

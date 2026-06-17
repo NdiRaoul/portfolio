@@ -83,7 +83,7 @@ export default function WhatIDo() {
           className="flex justify-center"
         >
           <Link href="/what-i-do">
-            <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90 rounded-full px-6 sm:px-8 py-4 sm:py-6 font-semibold text-sm sm:text-base">
+            <Button className="bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent hover:opacity-90 rounded-full px-6 sm:px-8 py-4 sm:py-6 font-semibold text-sm sm:text-base">
               View All Services
             </Button>
           </Link>

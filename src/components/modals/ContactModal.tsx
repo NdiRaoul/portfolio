@@ -151,7 +151,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                 <Button
                   type="submit"
                   disabled={isLoading}
-                  className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90 rounded-lg font-medium text-sm sm:text-base py-4 sm:py-5"
+                  className="w-full bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent hover:opacity-90 rounded-lg font-medium text-sm sm:text-base py-4 sm:py-5"
                 >
                   {isLoading ? 'Sending...' : 'Send Message'}
                 </Button>

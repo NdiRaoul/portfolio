@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight, ArrowUpRight } from 'lucide-react';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import gsap from 'gsap';
 import ProjectModal from '@/components/modals/ProjectModal';
@@ -127,7 +129,7 @@ export default function Projects() {
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       whileHover={{ scale: 1.1, x: 3 }}
-                      className="self-start p-2 sm:p-2.5 md:p-3 rounded-full bg-gradient-to-r from-primary to-accent text-white hover:shadow-lg transition-shadow"
+                      className="self-start p-2 sm:p-2.5 md:p-3 rounded-full bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent text-white hover:shadow-lg transition-shadow"
                     >
                       <ArrowUpRight className="w-4 h-4 sm:w-4 sm:h-4 md:w-5 md:h-5" />
                     </motion.a>
@@ -139,9 +141,22 @@ export default function Projects() {
 
           {/* Scroll Indicators */}
           <div className="absolute bottom-3 right-3 text-xs text-foreground/50 pointer-events-none hidden sm:block">
-            Hover to pause
+          
           </div>
         </motion.div>
+         <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                  className="flex justify-center pt-4"
+                >
+                  <Link href="/projects">
+                    <Button className="bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent hover:opacity-90 rounded-full px-6 sm:px-8 py-4 sm:py-6 font-semibold text-sm sm:text-base">
+                      View More
+                    </Button>
+                  </Link>
+                </motion.div>
       </div>
 
       {/* Project Modal */}

@@ -32,8 +32,8 @@ export default function Header() {
   const navItems = [
     { label: 'Home', href: '/' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Experience', href: '#experience' },
     { label: 'Skills', href: '#skills' },
+    { label: 'Experience', href: '#experience' },
   ];
 
   const menuVariants: Variants = {
@@ -63,7 +63,7 @@ export default function Header() {
       <header className="fixed top-0 left-0 right-0 z-50 pt-4 px-4 sm:px-6 lg:px-8">
         <nav className="container mx-auto max-w-6xl rounded-full bg-background/70 backdrop-blur-xl border border-primary/20 px-4 sm:px-8 py-2.5 sm:py-4 flex items-center justify-between shadow-lg relative z-50">
           {/* Logo */}
-          <Link href="/" className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity z-50">
+          <Link href="/" className="text-xl sm:text-2xl font-bold bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity z-50">
             NR
           </Link>
 
@@ -76,7 +76,7 @@ export default function Header() {
                 className="text-foreground/70 hover:text-foreground transition-colors duration-200 font-medium relative group"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent group-hover:w-full transition-all duration-300" />
               </Link>
             ))}
           </div>
@@ -86,7 +86,7 @@ export default function Header() {
             {/* Contact Button */}
             <Button
               onClick={() => setContactModalOpen(true)}
-              className="hidden sm:inline-flex bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity rounded-full px-6 font-semibold text-sm"
+              className="hidden sm:inline-flex bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent hover:opacity-90 transition-opacity rounded-full px-6 font-semibold text-sm"
             >
               Contact Me
             </Button>
@@ -166,7 +166,7 @@ export default function Header() {
                         setContactModalOpen(true);
                         setMobileMenuOpen(false);
                       }}
-                      className="w-full bg-gradient-to-r from-primary to-accent hover:scale-[1.02] active:scale-[0.98] transition-transform rounded-full py-6 text-lg font-semibold shadow-lg shadow-primary/25"
+                      className="w-full bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent hover:scale-[1.02] active:scale-[0.98] transition-transform rounded-full py-6 text-lg font-semibold shadow-lg shadow-primary/25"
                     >
                       Contact Me
                     </Button>

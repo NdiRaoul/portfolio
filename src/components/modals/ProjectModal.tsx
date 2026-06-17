@@ -59,7 +59,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 {/* Header */}
                 <div className="mb-4 sm:mb-6">
                   {project.featured && (
-                    <span className="inline-block px-2 sm:px-3 py-1 text-xs font-semibold text-primary-foreground bg-gradient-to-r from-primary to-accent rounded-full mb-2 sm:mb-3">
+                    <span className="inline-block px-2 sm:px-3 py-1 text-xs font-semibold text-primary-foreground bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent rounded-full mb-2 sm:mb-3">
                       Featured Project
                     </span>
                   )}
@@ -104,7 +104,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
-                      className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-primary to-accent text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
+                      className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary dark:bg-gradient-to-r dark:from-primary dark:to-accent text-primary-foreground font-semibold hover:opacity-90 transition-opacity"
                     >
                       <ExternalLink className="w-5 h-5" />
                       Live Demo
