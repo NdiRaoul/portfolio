@@ -59,36 +59,36 @@ export default function Skills() {
           </p>
         </motion.div>
 
-        {/* Animated Carousel - Single Row */}
-        <div className="overflow-hidden">
+        {/* Animated Carousel - Single Row.
+            Only the horizontal axis is clipped (overflow-x-hidden) so off-screen
+            items disappear, while the vertical axis stays visible — otherwise the
+            hover scale gets cut by a clip edge and shows a line across the row.
+            Generous py gives the lifted/scaled logos room to grow. */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          className="relative overflow-x-hidden overflow-y-visible px-4 py-12"
+        >
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            onMouseEnter={() => setIsPaused(true)}
-            onMouseLeave={() => setIsPaused(false)}
-            className="relative overflow-hidden p-4 py-10"
+            ref={rowRef}
+            className="flex gap-10 sm:gap-14 w-max items-center"
+            initial={{ x: 0 }}
           >
-            <div className="overflow-hidden">
-              <motion.div
-                ref={rowRef}
-                className="flex gap-10 sm:gap-14 w-max items-center"
-                initial={{ x: 0 }}
-              >
-                {/* Render list twice for seamless loop */}
-                {[...SKILLS_LIST, ...SKILLS_LIST].map((skill, idx) => (
-                  <SkillItem
-                    key={`${skill.name}-${idx}`}
-                    name={skill.name}
-                    logo={skill.logo}
-                    color={skill.color}
-                  />
-                ))}
-              </motion.div>
-            </div>
+            {/* Render list twice for seamless loop */}
+            {[...SKILLS_LIST, ...SKILLS_LIST].map((skill, idx) => (
+              <SkillItem
+                key={`${skill.name}-${idx}`}
+                name={skill.name}
+                logo={skill.logo}
+                color={skill.color}
+              />
+            ))}
           </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
@@ -103,6 +103,10 @@ interface SkillItemProps {
 function SkillItem({ name, logo, color }: SkillItemProps) {
   const [hovered, setHovered] = useState(false);
   const brandColor = color ?? 'var(--primary)';
+  // Monochrome "on-dark" logos use white (#FFFFFF) as their brand color, so they
+  // are invisible on the light-mode background. Give those a dark backing pill in
+  // light mode; in dark mode they sit on the dark page as before.
+  const isLightLogo = brandColor.toUpperCase() === '#FFFFFF';
 
   return (
     <motion.div
@@ -119,7 +123,11 @@ function SkillItem({ name, logo, color }: SkillItemProps) {
           alt={`${name} logo`}
           width={56}
           height={56}
-          className="w-12 h-12 sm:w-14 sm:h-14 object-contain transition-transform duration-300"
+          className={`w-12 h-12 sm:w-14 sm:h-14 object-contain transition-transform duration-300 ${
+            isLightLogo
+              ? 'rounded-xl bg-foreground p-1.5 dark:bg-transparent dark:p-0'
+              : ''
+          }`}
           draggable={false}
         />
       ) : (
