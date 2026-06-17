@@ -103,10 +103,6 @@ interface SkillItemProps {
 function SkillItem({ name, logo, color }: SkillItemProps) {
   const [hovered, setHovered] = useState(false);
   const brandColor = color ?? 'var(--primary)';
-  // Monochrome "on-dark" logos use white (#FFFFFF) as their brand color, so they
-  // are invisible on the light-mode background. Give those a dark backing pill in
-  // light mode; in dark mode they sit on the dark page as before.
-  const isLightLogo = brandColor.toUpperCase() === '#FFFFFF';
 
   return (
     <motion.div
@@ -123,11 +119,7 @@ function SkillItem({ name, logo, color }: SkillItemProps) {
           alt={`${name} logo`}
           width={56}
           height={56}
-          className={`w-12 h-12 sm:w-14 sm:h-14 object-contain transition-transform duration-300 ${
-            isLightLogo
-              ? 'rounded-xl bg-foreground p-1.5 dark:bg-transparent dark:p-0'
-              : ''
-          }`}
+          className="w-12 h-12 sm:w-14 sm:h-14 object-contain transition-transform duration-300"
           draggable={false}
         />
       ) : (
